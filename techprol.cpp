@@ -47,7 +47,7 @@ class complex_navigation_system {
         };
         float measure_gyro();
         float measure_position();
-        char list_sensors(){
+        void list_sensors(){
              for (int i = 0; i < 3; i++) {
                 cout << B[i].name << " ";
             }
