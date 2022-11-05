@@ -57,7 +57,12 @@ class complex_navigation_system {
             return (float)B[i].measure();
         };
 
-        float measure_position();
+        float measure_position() {
+            int i = 0;
+            B[i].measurement_range.min = 1;
+            B[i].measurement_range.max = 5;
+            return (float)B[i].measure();
+        };
 
         void list_sensors() 
         {
@@ -66,7 +71,20 @@ class complex_navigation_system {
             }
             cout << endl;
         };
-     
+
+        void sensor_measurement_list() {
+            for (int i = 0; i < 3; i++) {
+                if (B[i].name == "Acc") {
+                    measure_acc();
+                }
+                else if (B[i].name == "Gyro") {
+                    measure_gyro();
+                }
+                else if (B[i].name == "Position") {
+                    measure_position();
+                }
+            }
+        }
 };
 
 int main ()
@@ -76,4 +94,5 @@ int main ()
     A.add_sensor();
     cout << endl;
     A.list_sensors();
+    A.sensor_measurement_list();
 }
