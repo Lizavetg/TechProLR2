@@ -13,32 +13,47 @@ class sensors {
     public: 
         string name;
         string measurement_unit;
-        // float measure_range_min;
-        // float measure_range_max;
         range measurement_range; 
 
         void measure()
         {
-            // cin >> measurement_range.min;
-            // cout << endl;
-            // cin >> measurement_range.max;
             random_device rd;
             mt19937 e2(rd());
-            uniform_real_distribution<> dist(measurement_range.min, measurement_range.max);
-            cout << dist(e2) << endl;
-
+            uniform_real_distribution <> dist(measurement_range.min, measurement_range.max);
+            cout << dist(e2) << " ";
+            return dist(e2);
         }
 };
 
 class complex_navigation_system {
     public:
         string name;
-        void add_sensor();
-        float measure_acc();
+         sensors B[3];
+        void add_sensor()
+            {
+            for (int i = 0; i < 3; i++) {
+                cout << "Enter the name of the sensor: ";
+                cin >> B[i].name;
+                cout << "Enter the unit of measurement: ";
+                cin >> B[i].measurement_unit;
+            }
+        };
+        float measure_acc(){
+             int i = 0;
+            float value;
+            B[i].measurement_range.min = 10;
+            B[i].measurement_range.max = 30;
+            return (float)B[i].measure();
+        };
         float measure_gyro();
         float measure_position();
-        char list_sensors();
-        sensors B[3];
+        char list_sensors(){
+             for (int i = 0; i < 3; i++) {
+                cout << B[i].name << " ";
+            }
+            cout << endl;
+        };
+     
 };
 
 int main ()
