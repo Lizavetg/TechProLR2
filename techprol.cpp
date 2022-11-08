@@ -43,7 +43,6 @@ class complex_navigation_system {
         float measure_acc()
         {
              int i = 0;
-            float value;
             B[i].measurement_range.min = 10;
             B[i].measurement_range.max = 30;
             return (float)B[i].measure();
